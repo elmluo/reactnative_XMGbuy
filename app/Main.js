@@ -32,11 +32,15 @@ export default class Main extends Component {
                     renderSelectedIcon={() => <Image source={require('./assets/img/icon_tabbar_homepage_selected.png')} style={styles.iconStyle}/>}
                     badgeText="1"
                     renderBadge={()=>{
-                        return (
-                            <View style={styles.badge}>
-                                <Text style={styles.badgeText}>1</Text>
-                            </View>
-                        )
+                        let textData = "1";
+                        if (textData) {
+                            return (
+                                <View style={styles.badge}>
+                                    <Text style={styles.badgeText}>{textData}</Text>
+                                </View>
+                            )
+                        }
+
                     }}
                     onPress={() => this.setState({ selectedTab: 'home' })}
                     selected={this.state.selectedTab === 'home'}
