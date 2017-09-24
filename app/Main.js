@@ -1,10 +1,11 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Image, View, Text, Platform } from 'react-native';
+// 从大模块儿中引入需要的功能模块儿
 // 一定要要使用解构
 import { Navigator } from 'react-native-deprecated-custom-components'
 import TabNavigator from 'react-native-tab-navigator';
-// 从大模块儿中引入需要的功能模块儿
+
 import Home from './Home/Home';
 import Shop from './Shop/Shop';
 import Mine from './Mine/Mine';
@@ -48,7 +49,11 @@ export default class Main extends Component {
                     <Navigator
                         initialRoute={{name:'首页',component:Home}}
                         configureScene={()=>{// 过渡动画
-                            return Navigator.SceneConfigs.PushFromRight;
+                            // return Navigator.SceneConfigs.PushFromRight;
+                            // return Navigator.SceneConfigs.FloatFromRight;
+                            return Navigator.SceneConfigs.FloatFromBottom;
+                            // return Navigator.SceneConfigs.HorizontalSwipeJump;
+                            // return Navigator.SceneConfigs.VerticalDownSwipeJump;
                         }}
                         renderScene={(route,navigator)=>{
                             let Component = route.component;
@@ -71,7 +76,16 @@ export default class Main extends Component {
                         )
                     }}
                     onPress={() => this.setState({ selectedTab: 'shop' })}>
-                    <Shop/>
+                    <Navigator
+                        initialRoute={{name:'商家',component:Shop}}
+                        configureScene={()=>{// 过渡动画
+                            return Navigator.SceneConfigs.FloatFromRight;
+                        }}
+                        renderScene={(route,navigator)=>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator}/>;
+                        }}
+                    />
                 </TabNavigator.Item>
 
                 <TabNavigator.Item
@@ -81,7 +95,16 @@ export default class Main extends Component {
                     renderSelectedIcon={() => <Image source={require('./assets/img/icon_tabbar_mine_selected.png')} style={styles.iconStyle}/>}
                     badgeText="1"
                     onPress={() => this.setState({ selectedTab: 'mine' })}>
-                    <Mine/>
+                    <Navigator
+                        initialRoute={{name:'我的',component:Mine}}
+                        configureScene={()=>{// 过渡动画
+                            return Navigator.SceneConfigs.FloatFromRight;
+                        }}
+                        renderScene={(route,navigator)=>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator}/>;
+                        }}
+                    />
                 </TabNavigator.Item>
 
                 <TabNavigator.Item
@@ -92,7 +115,16 @@ export default class Main extends Component {
                     renderSelectedIcon={() => <Image source={require('./assets/img/icon_tabbar_misc_selected.png')} style={styles.iconStyle}/>}
                     badgeText="1"
                     onPress={() => this.setState({ selectedTab: 'more' })}>
-                    <More/>
+                    <Navigator
+                        initialRoute={{name:'更多',component:More}}
+                        configureScene={()=>{// 过渡动画
+                            return Navigator.SceneConfigs.FloatFromRight;
+                        }}
+                        renderScene={(route,navigator)=>{
+                            let Component = route.component;
+                            return <Component {...route.passProps} navigator={navigator}/>;
+                        }}
+                    />
                 </TabNavigator.Item>
             </TabNavigator>
         );
