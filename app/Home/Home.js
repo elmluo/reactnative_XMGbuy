@@ -3,9 +3,12 @@ import React, { Component } from 'react';
 import {
     StyleSheet,
     Text,
+    TextInput,
     View,
     Image,
-    TouchableOpacity
+    TouchableOpacity,
+    BackHandler,
+    Platform,
 } from 'react-native';
 import HomeDetail from './Home_detail'
 export default class Home extends Component {
@@ -15,9 +18,12 @@ export default class Home extends Component {
 
         }
     }
+
     render() {
         return (
             <View style={styles.container}>
+                {/*首页导航条*/}
+                {this._renderNavBar()}
                 <Text>
                     我是Home页面
                 </Text>
@@ -42,14 +48,40 @@ export default class Home extends Component {
             </View>
         );
     }
+
+    /**
+     * 渲染导航条
+     * @returns {XML}
+     * @private
+     */
+    _renderNavBar() {
+        return(
+            <View>
+                <View>
+                    <Text>广州</Text>
+                </View>
+                <View>
+                    <TextInput
+                        placeholder="输入商家爱，品类，商圈"
+                        style={styles.navTextInput}/>
+                </View>
+                <View></View>
+            </View>
+        )
+    }
 }
 
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
         backgroundColor: '#F5FCFF',
     },
+    nav: {
+
+    },
+    navInput: {
+
+    }
+
 });
 
