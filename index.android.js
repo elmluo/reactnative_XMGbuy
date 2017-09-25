@@ -9,16 +9,26 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
 } from 'react-native';
-
-import Main from './app/Main'
+import { Navigator } from 'react-native-deprecated-custom-components'
+import LanchImage from './app/LanchImage'
 
 export default class XMGbuy extends Component {
+
   render() {
-    return (
-      <Main/>
-    );
+    return(
+        <Navigator
+            initialRoute={{name:'加载动画',component:LanchImage}}
+            configureScene={()=>{// 过渡动画
+                return Navigator.SceneConfigs.FloatFromRight;
+            }}
+            renderScene={(route,navigator)=>{
+                let Component = route.component;
+                return <Component {...route.passProps} navigator={navigator}/>;
+            }}
+        />
+    )
   }
 }
 

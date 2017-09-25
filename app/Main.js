@@ -47,7 +47,7 @@ export default class Main extends Component {
                     selected={this.state.selectedTab === 'home'}
                     allowFontScaling={true}>
                     <Navigator
-                        initialRoute={{name:'首页',component:Home}}
+                        initialRoute={{name:'首1页',component:Home}}
                         configureScene={()=>{// 过渡动画
                             // return Navigator.SceneConfigs.PushFromRight;
                             // return Navigator.SceneConfigs.FloatFromRight;

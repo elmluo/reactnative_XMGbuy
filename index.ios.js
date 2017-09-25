@@ -11,11 +11,11 @@ import {
   Text,
   View
 } from 'react-native';
-import Main from './app/Main'
+import LanchImage from './app/LanchImage'
 export default class XMGbuy extends Component {
   render() {
     return (
-     <Main/>
+     <LanchImage/>
     );
   }
 }
