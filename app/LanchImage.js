@@ -24,6 +24,7 @@ export default class LanchImage extends Component {
 
     componentDidMount() {
         setTimeout(()=>{
+            console.log(this);
             this.props.navigator.replace({
                 component: Main,
             })
@@ -35,7 +36,7 @@ export default class LanchImage extends Component {
             <View style={styles.container}>
                 <Image
                     style={styles.lanchImage}
-                    source={require('./assets/img/lanch_img.png')}/>
+                    source={require('./assets/img/launchimage.png')}/>
             </View>
         );
     }
